@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskar Sainik - Resume</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5rem;
+        }
+        .contact-info {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .contact-item a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-bottom: 25px;
+        }
+        .item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .item-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        .item-subtitle {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+        .item-date {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .item ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .item li {
+            margin-bottom: 8px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #3498db;
+        }
+        .skill-category strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .achievements-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .achievement-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .achievement-item h4 {
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 4px;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .item {
+                page-break-inside: avoid;
+            }
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sanskar Sainik</h1>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <a href="mailto:sanskarsainik40@gmail.com">sanskarsainik40@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <span>📱</span>
+                <a href="tel:+917470932909">+91 7470932909</a>
+            </div>
+            <div class="contact-item">
+                <span>💼</span>
+                <a href="https://www.linkedin.com/in/sanskarsainik04/" target="_blank">LinkedIn</a>
+            </div>
+            <div class="contact-item">
+                <span>💻</span>
+                <a href="https://github.com/sanskarsainik04/" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <strong>🚀 Languages</strong>
+                    <p>C++, Python, C, Java</p>
+                </div>
+                <div class="skill-category">
+                    <strong>🛠️ Tools/Platforms</strong>
+                    <p>MySQL, Apache CloudStack, Linux, Docker, CloudWatch, KVM, AWS (EC2, S3, etc.)</p>
+                </div>
+                <div class="skill-category">
+                    <strong>📚 Core CS Concepts</strong>
+                    <p>Data Structures & Algorithms, OOPs, DBMS, OS, Computer Networks</p>
+                </div>
+                <div class="skill-category">
+                    <strong>🤝 Soft Skills</strong>
+                    <p>Documentation, Problem-Solving, Communication, Team Collaboration, Adaptability</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Projects</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Friend Suggestion System</div>
+                    <div class="item-date">Jul' 25</div>
+                </div>
+                <ul>
+                    <li>Built an ML-powered friend suggestion system using shared interests, mutual connections, and interaction patterns, achieving 88% accuracy and improving user engagement by 30%.</li>
+                    <li>Designed an intuitive UI with optimized recommendation logic, delivering smooth interaction flow and 92% user satisfaction in internal testing.</li>
+                </ul>
+                <div class="item-subtitle"><strong>Tech:</strong> Python, C++, HTML, CSS, JavaScript, File Handling</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">AWS Cloud Solution for Home Automation and Security</div>
+                    <div class="item-date">Apr' 25</div>
+                </div>
+                <ul>
+                    <li>Developed a real-time smart home monitoring system using AWS IoT Core and Lambda to detect anomalies and trigger automated security alerts via SNS with sub-second response time.</li>
+                    <li>Designed a scalable, secure serverless architecture leveraging S3 for sensor log storage and CloudWatch monitoring, ensuring high availability and cost efficiency.</li>
+                </ul>
+                <div class="item-subtitle"><strong>Tech:</strong> AWS IoT Core, AWS Lambda, Amazon SNS, S3, CloudWatch, API Gateway, Python, JavaScript, JSON, Serverless Architecture</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Student Portfolio Web Application</div>
+                    <div class="item-date">Jul' 25</div>
+                </div>
+                <ul>
+                    <li>Developed a Flask-based portfolio builder enabling students to showcase projects, certificates, events, and achievements with dynamic form-based content management and public read-only access.</li>
+                    <li>Designed a responsive, Bootstrap-powered UI ensuring cross-device usability while maintaining a structured, template-driven architecture.</li>
+                </ul>
+                <div class="item-subtitle"><strong>Tech:</strong> Flask, Python, HTML, CSS, JavaScript, Bootstrap, Flask-WTF</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Training</h2>
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">CodeQuest: DSA Summer Bootcamp - LPU</div>
+                    <div class="item-date">Jun' 25 – Jul' 25</div>
+                </div>
+                <ul>
+                    <li>Completed an intensive DSA bootcamp focused on structured problem-solving and algorithm design, boosting coding confidence and accuracy by 30%.</li>
+                    <li>Solved 100+ problems across arrays, linked lists, graphs, DP, and greedy algorithms.</li>
+                    <li>Enhanced problem-solving accuracy by 30% and mastered time/space complexity optimization.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Certificates</h2>
+            <div class="item">
+                <div class="item-title">Privacy and Security in Online Social Media - NPTEL</div>
+                <div class="item-date">Jul' 25 – Oct' 25</div>
+            </div>
+            <div class="item">
+                <div class="item-title">Oracle Cloud Infrastructure 2025 Certified Foundations Associate - Oracle</div>
+                <div class="item-date">Sep' 25</div>
+            </div>
+            <div class="item">
+                <div class="item-title">The Bits and Bytes of Computer Networking</div>
+                <div class="item-date">Sep' 24</div>
+            </div>
+            <div class="item">
+                <div class="item-title">Introduction to Hardware and Operating Systems</div>
+                <div class="item-date">Sep' 24</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Achievements</h2>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <h4>🏆 Binary Blitz Hackathon (Top 10 Rank)</h4>
+                    <p>Secured Top 10 rank among 700+ participants; demonstrated proficiency in Competitive Programming (Mar' 24)</p>
+                </div>
+                <div class="achievement-item">
+                    <h4>💪 LeetCode Problem Solver</h4>
+                    <p>Solved 250+ problems on LeetCode demonstrating strong DSA skills</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Bachelor of Technology - Computer Science and Engineering</div>
+                    <div class="item-date">Aug' 23 – Present</div>
+                </div>
+                <div class="item-subtitle">Lovely Professional University, Jalandhar, Punjab</div>
+                <div>CGPA: 7.64</div>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Intermediate (PCM)</div>
+                    <div class="item-date">Mar' 22 – May' 23</div>
+                </div>
+                <div class="item-subtitle">DAV HCL Public School, Malanjkhand, Madhya Pradesh</div>
+                <div>Percentage: 77%</div>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <div class="item-title">Matriculation</div>
+                    <div class="item-date">Mar' 20 – May' 21</div>
+                </div>
+                <div class="item-subtitle">DAV HCL Public School, Malanjkhand, Madhya Pradesh</div>
+                <div>Percentage: 76.2%</div>
+            </div>
+        </div>
+
+        
+    </div>
+</body>
+</html>

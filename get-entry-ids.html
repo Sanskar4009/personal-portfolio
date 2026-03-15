@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extract Google Form Entry IDs</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #1e293b; color: #e4e7ff; }
+        .container { max-width: 800px; margin: 0 auto; background: #0f172a; padding: 30px; border-radius: 10px; }
+        code { background: #1e293b; padding: 2px 6px; border-radius: 4px; }
+        pre { background: #1e293b; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        button { background: #7b61ff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 10px 5px; }
+        button:hover { opacity: 0.9; }
+        .result { margin-top: 20px; padding: 15px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Extract Google Form Entry IDs</h1>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Open your Google Form: <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzHfTUQX8UYIW5-NhmTA7UiSJiJep47b7tO7wdCDBfztck9Q/viewform" target="_blank" style="color: #5f9eff;">Click here</a></li>
+            <li>Press <strong>F12</strong> → Go to <strong>Console</strong> tab</li>
+            <li>Copy the code below and paste it into the console, then press Enter</li>
+            <li>Copy the output and update your <code>script.js</code> file</li>
+        </ol>
+        
+        <h3>Code to paste in Google Form console:</h3>
+        <pre id="code">(function() {
+    console.log('%c🔍 Extracting Entry IDs...', 'color: #7b61ff; font-size: 16px; font-weight: bold;');
+    const inputs = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
+    const results = {};
+    const found = [];
+    
+    inputs.forEach((input, i) => {
+        if (input.name && input.name.startsWith('entry.')) {
+            const label = input.closest('[role="listitem"]')?.querySelector('[role="heading"]')?.textContent?.trim() || 
+                         input.closest('div')?.querySelector('span[dir="auto"]')?.textContent?.trim() || 
+                         `Field ${i+1}`;
+            const lowerLabel = label.toLowerCase();
+            
+            let key = '';
+            if (lowerLabel.includes('name') || (i === 0 && input.type !== 'email')) {
+                key = 'name';
+            } else if (lowerLabel.includes('email') || input.type === 'email') {
+                key = 'email';
+            } else if (lowerLabel.includes('message') || input.tagName === 'TEXTAREA') {
+                key = 'message';
+            } else {
+                key = `field${i+1}`;
+            }
+            
+            results[key] = input.name;
+            found.push({label, id: input.name, key});
+            console.log(`%c✓ ${label}: %c${input.name}`, 'color: #4ade80;', 'color: #5f9eff; font-family: monospace;');
+        }
+    });
+    
+    if (found.length === 0) {
+        console.error('%c❌ No entry IDs found!', 'color: #f87171; font-weight: bold;');
+        return null;
+    }
+    
+    console.log('%c\\n✅ Entry IDs extracted!', 'color: #4ade80; font-size: 14px; font-weight: bold;');
+    console.log('%c\\n📋 Copy this to your ENTRY_IDS in script.js:', 'color: #7b61ff; font-size: 14px; font-weight: bold;');
+    const output = JSON.stringify(results, null, 4);
+    console.log(`const ENTRY_IDS = ${output};`);
+    
+    return results;
+})();</pre>
+        
+        <button onclick="copyCode()">📋 Copy Code</button>
+        <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdzHfTUQX8UYIW5-NhmTA7UiSJiJep47b7tO7wdCDBfztck9Q/viewform', '_blank')">🔗 Open Google Form</button>
+    </div>
+    
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied! Paste it in the Google Form console.');
+            });
+        }
+    </script>
+</body>
+</html>
+
