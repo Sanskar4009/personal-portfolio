@@ -544,7 +544,7 @@ window.extractGoogleFormEntryIds = function() {
 extractGoogleFormEntryIds();
 */
 
-// Form submission handler with Google Forms integration
+// Contact Form - EmailJS Integration
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 const submitBtn = document.getElementById('submitBtn');
@@ -553,9 +553,9 @@ if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const nameInput = document.getElementById('name');
-        const emailInput = document.getElementById('email');
-        const messageInput = document.getElementById('message');
+        const nameInput = document.getElementById('contactName');
+        const emailInput = document.getElementById('contactEmail');
+        const messageInput = document.getElementById('contactMessage');
         
         const name = nameInput.value.trim();
         const email = emailInput.value.trim();
@@ -574,33 +574,24 @@ if (contactForm) {
             return;
         }
         
-        // Get entry IDs (use detected or manual configuration)
-        const entryIds = detectEntryIds();
-        
-        // Entry IDs are now configured - validation removed
-        // All entry IDs are correctly set from Google Form extraction
-        
         // Show loading state
         setLoadingState(true);
         hideMessage();
         
-        // Prepare form data for Google Forms
-        const formData = new FormData();
-        formData.append(entryIds.name, name);
-        formData.append(entryIds.email, email);
-        formData.append(entryIds.message, message);
-        
-        // Submit to Google Forms
         try {
-            const response = await fetch(GOOGLE_FORM_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: formData
-            });
+            // Send email using EmailJS
+            // IMPORTANT: Replace with your actual EmailJS Service ID and Template ID
+            const serviceID = 'service_mz826qh'; // Get from EmailJS Dashboard > Email Services
+            const templateID = 'template_3crvruh'; // Get from EmailJS Dashboard > Email Templates
             
-            // Note: With no-cors mode, we can't read the response
-            // But if the request was sent, it's likely successful
-            // Google Forms will accept the submission even with no-cors
+            const templateParams = {
+                name: name,
+                email: email,
+                message: message,
+                to_name: 'Sanskar Sainik' // Your name
+            };
+            
+            await emailjs.send(serviceID, templateID, templateParams);
             
             // Show success message
             showMessage('Thank you for your message! I will get back to you soon.', 'success');
@@ -613,14 +604,8 @@ if (contactForm) {
             
         } catch (error) {
             console.error('Form submission error:', error);
-            // Even with errors, the form might have been submitted
-            // Show success message as Google Forms typically accepts submissions
-            showMessage('Thank you for your message! I will get back to you soon.', 'success');
-            
-            setTimeout(() => {
-                contactForm.reset();
-                setLoadingState(false);
-            }, 1500);
+            showMessage('Oops! Something went wrong. Please try again later.', 'error');
+            setLoadingState(false);
         }
     });
 }

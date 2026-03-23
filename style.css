@@ -2210,39 +2210,72 @@ body {
     background: var(--accent-rgba-1);
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.social-link:hover::before {
+    left: 100%;
 }
 
 .social-link:hover {
     transform: translateX(10px);
     background: var(--accent-rgba-1);
-    border-color: var(--text-accent);
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
 }
 
-.social-link svg {
+.social-link i {
+    font-size: 24px;
     width: 24px;
     height: 24px;
-    transition: all 0.3s ease;
-}
-
-.social-link.linkedin:hover svg {
-    color: #0077b5;
-    transform: scale(1.2);
-}
-
-.social-link.github:hover svg {
-    color: #333;
-    transform: scale(1.2);
-}
-
-.social-link.codolio:hover svg {
-    color: var(--text-accent);
-    transform: scale(1.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .social-link span {
     font-weight: 600;
     font-size: 1rem;
+    z-index: 1;
+}
+
+/* LinkedIn Specific Styles */
+.social-link.linkedin {
+    border-color: transparent;
+}
+
+.social-link.linkedin:hover {
+    border-color: #0077b5;
+    background: rgba(0, 119, 181, 0.1);
+}
+
+.social-link.linkedin:hover i {
+    color: #0077b5;
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* GitHub Specific Styles */
+.social-link.github {
+    border-color: transparent;
+}
+
+.social-link.github:hover {
+    border-color: #333;
+    background: rgba(51, 51, 51, 0.1);
+}
+
+.social-link.github:hover i {
+    color: #333;
+    transform: scale(1.2) rotate(-5deg);
 }
 
 .contact-form {
@@ -2255,6 +2288,16 @@ body {
     margin-bottom: 1.5rem;
     color: var(--text-primary);
     text-align: center;
+}
+
+/* Form Labels */
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Form Message (Success/Error) */
@@ -2298,6 +2341,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
 }
 
 .btn-primary:disabled {
@@ -2315,8 +2359,13 @@ body {
 }
 
 .btn-primary.loading .btn-loader {
-    display: inline-block;
-    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary i {
+    margin-right: 0.5rem;
 }
 
 .form-group {
@@ -2342,6 +2391,7 @@ body {
     border-color: var(--text-accent);
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
     background: rgba(30, 41, 59, 0.8);
+    transform: translateY(-2px);
 }
 
 .form-group input::placeholder,
@@ -2352,6 +2402,7 @@ body {
 
 .form-group textarea {
     resize: vertical;
+    min-height: 120px;
 }
 
 /* Footer */
