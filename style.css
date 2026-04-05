@@ -2772,6 +2772,15 @@ body {
         padding: 0.4rem 0.8rem;
     }
 
+    /* Project buttons on mobile */
+    .project-buttons {
+        flex-direction: column;
+    }
+
+    .project-buttons .project-btn {
+        width: 100%;
+    }
+
     .certifications-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -3022,6 +3031,30 @@ body {
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
+}
+
+/* Project Buttons Container */
+.project-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.project-buttons .project-btn {
+    margin-top: 0;
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+}
+
+/* Live Demo Button - Different Color */
+.btn-live {
+    background: linear-gradient(90deg, #10b981, #34d399) !important;
+}
+
+.btn-live:hover {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5) !important;
 }
 
 .project-btn .arrow {
